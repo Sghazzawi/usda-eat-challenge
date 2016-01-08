@@ -1,0 +1,37 @@
+<template>
+	<h2>Children</h2>
+	  <div repeat.for="child of application.children">
+	    <span>${child.firstName}</span>
+	    <span>${child.lastName}</span>
+	    <span>${child.isEnrolled}</span>
+	    <span>${child.isFoster}</span>
+	    <span>${child.isHomeless}</span>
+	  </div>
+	<h2>Adults</h2>
+	  <div repeat.for="adult of application.adults">
+	    <span>${adult.firstName}</span>
+	    <span>${adult.lastName}</span>
+	  </div>
+	<h2>Address</h2>
+	  <div>
+	    <label>Street</label>
+	    <span>${application.address.street}</span>
+	  </div>
+	  <div>
+	    <label>Apt</label>
+	    <span>${application.address.apt}</span>
+	</div>
+	<div>
+	    <label>City</label>
+	    <span>${application.address.city}</span>
+	</div>
+	<div>
+	    <label>State</label>
+	    <span>${application.address.state}</span>
+	</div>
+	<div>
+	    <label>Zip Code</label>
+	    <span>${application.address.zipCode}</span>
+	</div>
+</template>
+
