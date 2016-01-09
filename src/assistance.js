@@ -3,26 +3,49 @@ import {eatApplication} from './model/eatApplication'
 import {Router} from 'aurelia-router';
 import StepMixin from './mixins/step-mixin';
 import Route from './route';
+import AssistanceProgrom from './model/assistance'
+import {Validation} from 'aurelia-validation';
 
-@inject(eatApplication, Router)
-export class Children extends StepMixin(Route){
-	constructor(eatApplication, router) {
+@inject(eatApplication, Validation, Router)
+export class Assitance extends StepMixin(Route){
+	constructor(eatApplication, validation, router) {
 		super(eatApplication,router);
 		this.next="children/income";
-		this.assistancePrograms = [{title:"SNAP"},{title:"TANF"},{title:"FDPIR"}];
 	}
 
 	continue() {
-		if (this.assistancePrograms.some(program => program.isEnrolled)) {
-			this.next="verify";
-		}
-		super.continue();
+		Promise.all(this.eatApplication.assistancePrograms
+			.filter(program => program.isEnrolled)
+			.map(program => program.validation.validate()))
+		.then(() => {
+			if (this.eatApplication.assistancePrograms.some(program => program.isEnrolled)) {
+				this.next="verify";
+			}
+			super.continue();
+		},
+		(reason) => {
+			debugger;
+		});
 	}
-
+    
 	submit() {
-		// this.eatApplication.addChild(Object.assign({},this.child));
-		// this.child = {};
-	 //    document.getElementById("fn").focus();
+	// 	debugger;
+	// 	this.assistancePrograms.forEach(function)
+	// 	this.eatApplication.addChild(Object.assign({},this.child));
+	// 	this.child = {};
+	//     document.getElementById("fn").focus();
+	//  		Promise.all(this.eatApplication.assistancePrograms
+	// 		.filter(program => program.isEnrolled)
+	// 		.map(program => program.validate()))
+	// 	.then(() => {
+	// 		if (this.eatApplication.assistancePrograms.some(program => program.isEnrolled)) {
+	// 			this.next="verify";
+	// 		}
+	// 		super.continue();
+	// 	},
+	// 	(reason) => {
+	// 		debugger;
+	// 	});
 	}
 
 }

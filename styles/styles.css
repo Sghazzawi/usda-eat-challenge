@@ -43,6 +43,10 @@ body {
   flex-direction:column;
 }
 
+.question-panel {
+  height: 200px;
+}
+
 .x1 {
   flex: 1;
 }
