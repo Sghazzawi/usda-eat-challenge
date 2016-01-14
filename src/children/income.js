@@ -9,13 +9,40 @@ export class Income extends StepMixin(Route) {
   constructor(eatApplication, router) {
   	super(eatApplication, router);
   	this.next = 'adults';
-  	this.eatApplication.children.forEach(function(child){
-  		child.income = child.income || [];
-  	});
-  	this.incomeTypes = [{title: 'work'},
-  	                    {title: 'Social Security - Disability Benefits'},
-  	                    {title: 'Social Security - Survivor Benefits'},
-  	                    {title: 'Persons Outside the Household'},
-  	                    {title: 'Other'}];
+    var self = this;
+    this.eatApplication.children.forEach(function(child){
+      child.income = child.income || [];
+    });
+    this.incomeTypes = [{title: 'work',
+    shouldDisplay: false,
+    quesion: "work"},
+    {title: 'Social Security - Disability Benefits',
+    shouldDisplay: false},
+    {title: 'Social Security - Survivor Benefits',
+    shouldDisplay: false},
+    {title: 'Persons Outside the Household',
+    shouldDisplay: false},
+    {title: 'Other',
+    shouldDisplay: false}];
+    this.questions = (function *(residents, questions){
+      for (let i=0; i < residents.length; i++) {
+        for (let j=0; j < questions.length; j++) {
+          yield {
+            resident: residents[i],
+            question: questions[j]
+          };
+        }
+      };
+    })(this.eatApplication.children, this.incomeTypes);
+    this.incrementQuestion();
+  }
+
+  incrementQuestion(){
+    let next = this.questions.next();
+    if (next.done){
+      this.continue();
+    } else {
+      this.currentQuestion = next.value;
+    }
   }
 }

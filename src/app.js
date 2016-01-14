@@ -11,6 +11,7 @@ export class App {
       { route: 'assistance',          name: 'assistance',          moduleId: 'assistance',          nav: true, title: 'Assistance Programs'},
       { route: 'children/income',     name: 'children/income',     moduleId: 'children/income',     nav: true, title: 'Child Income'},
       { route: 'adults',              name: 'adults',              moduleId: 'adults',              nav: true, title: 'Household Adults'},
+      { route: 'income',              name: 'income',              moduleId: 'income',              nav: true, title: 'Adult Income'},
       { route: 'verify',              name: 'verify',              moduleId: 'verify',              nav: true, title: 'Verify'},
 
     ]);

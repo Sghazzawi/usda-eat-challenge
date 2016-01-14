@@ -1,5 +1,7 @@
 <template>
 <div class="flex-col centered-column">
+<div class="question-panel">
+</div>
 <div class="flex">
     <div><span>First Name</span></div><div><span>Last Name</span></div><div id="button-padding-div"></div>
 </div>
@@ -14,7 +16,7 @@
      <button type="submit" class="btn btn-default" click.delegate="submit()"><i class="fa fa-plus"></i></button>
  </div>
  <div class="flex">
-   <button type="submit" class="btn btn-default" click.delegate="submit()" >Done <i class="fa fa-arrow-right"></i></button>
+   <button type="submit" class="btn btn-default" click.delegate="continue()" >Done <i class="fa fa-arrow-right"></i></button>
  </div>
 </div>
 </template>

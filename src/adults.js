@@ -9,7 +9,7 @@ export class Adults extends StepMixin(Route) {
 	constructor(eatApplication, router) {
 		super(eatApplication,router);
 		this.adult = {};
-		this.next="verify";
+		this.next="income";
 	}
 
 	submit() {

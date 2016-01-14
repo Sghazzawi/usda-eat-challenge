@@ -29,23 +29,7 @@ export class Assitance extends StepMixin(Route){
 	}
     
 	submit() {
-	// 	debugger;
-	// 	this.assistancePrograms.forEach(function)
-	// 	this.eatApplication.addChild(Object.assign({},this.child));
-	// 	this.child = {};
-	//     document.getElementById("fn").focus();
-	//  		Promise.all(this.eatApplication.assistancePrograms
-	// 		.filter(program => program.isEnrolled)
-	// 		.map(program => program.validate()))
-	// 	.then(() => {
-	// 		if (this.eatApplication.assistancePrograms.some(program => program.isEnrolled)) {
-	// 			this.next="verify";
-	// 		}
-	// 		super.continue();
-	// 	},
-	// 	(reason) => {
-	// 		debugger;
-	// 	});
+
 	}
 
 }
