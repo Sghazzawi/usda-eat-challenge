@@ -6,11 +6,19 @@
 	    <span>${child.isEnrolled}</span>
 	    <span>${child.isFoster}</span>
 	    <span>${child.isHomeless}</span>
+	    <div repeat.for="income of child.income">
+	      <span>${income.amount}</span>
+	      <span>${income.frequency}</span>
+	    </div>
 	  </div>
 	<h2>Adults</h2>
 	  <div repeat.for="adult of application.adults">
 	    <span>${adult.firstName}</span>
 	    <span>${adult.lastName}</span>
+	    <div repeat.for="income of adult.income">
+	      <span>${income.amount}</span>
+	      <span>${income.frequency}</span>
+	    </div>
 	  </div>
 	<h2>Address</h2>
 	  <div>

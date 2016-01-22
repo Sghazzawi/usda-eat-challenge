@@ -3,13 +3,16 @@ import {inject} from 'aurelia-framework';
 import {eatApplication} from '../model/eatApplication'
 import {Router} from 'aurelia-router';
 import StepMixin from '../mixins/step-mixin';
+import {Validation} from 'aurelia-validation';
+import IncomeModel from '../model/income';
 
-@inject(eatApplication, Router)
+@inject(eatApplication, Validation, Router)
 export class Income extends StepMixin(Route) {
-  constructor(eatApplication, router) {
+  constructor(eatApplication, validation, router) {
   	super(eatApplication, router);
   	this.next = 'adults';
     var self = this;
+    this.validation = validation;
     this.eatApplication.children.forEach(function(child){
       child.income = child.income || [];
     });
@@ -24,25 +27,5 @@ export class Income extends StepMixin(Route) {
     shouldDisplay: false},
     {title: 'Other',
     shouldDisplay: false}];
-    this.questions = (function *(residents, questions){
-      for (let i=0; i < residents.length; i++) {
-        for (let j=0; j < questions.length; j++) {
-          yield {
-            resident: residents[i],
-            question: questions[j]
-          };
-        }
-      };
-    })(this.eatApplication.children, this.incomeTypes);
-    this.incrementQuestion();
-  }
-
-  incrementQuestion(){
-    let next = this.questions.next();
-    if (next.done){
-      this.continue();
-    } else {
-      this.currentQuestion = next.value;
-    }
   }
 }

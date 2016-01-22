@@ -8,7 +8,7 @@ import Route from './route';
 @inject(eatApplication, Validation, Router)
 export class Verify extends StepMixin(Route) {
 	constructor(eatApplication, validation, router) {
-		super(eatApplication,router);
+		super(eatApplication, router);
 		console.log(eatApplication);
 		this.application = eatApplication;
 	}

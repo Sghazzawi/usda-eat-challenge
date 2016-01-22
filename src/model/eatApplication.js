@@ -36,11 +36,11 @@ export class eatApplication {
 	}
 
 	get address() {
-		return  address ? Object.assign(new AddressModel(this.validation), address) : address;
+		return  address; //? Object.assign(new AddressModel(this.validation), address) : address;
 	}
 
 	set address(addressIn){
-		address = addressIn ? Object.assign(new AddressModel(this.validation), addressIn) : addressIn;
+		address = addressIn;// ? Object.assign(new AddressModel(this.validation), addressIn) : addressIn;
 	}
 
 	get children() {

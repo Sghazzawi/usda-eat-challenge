@@ -1,0 +1,19 @@
+<template>
+	<div class="flex-col">
+		<div class="flex">
+		  	<span>Does ${currentQuestion.resident.firstName} ${currentQuestion.resident.lastName}
+				recieve any income from ${currentQuestion.question.title}</span>
+			</div>
+			<div class="flex" if.bind="!answeredYes">
+				<button click.delegate = "answerYes()">Yes</button><button click.delegate="incrementQuestion()">No</button>
+			</div>
+			<div class="flex" if.bind="answeredYes">
+			<input type="text" value.bind="incomeAmount">
+				<select value.bind="selectedFrequency">
+					<option repeat.for="frequency of frequencies">${frequency}</option>
+				</select>
+				<button click.delegate = "cancel()">Cancel</button><button click.delegate="submit()">Submit</button>
+			</div>
+		</div>
+	</div>
+</template>

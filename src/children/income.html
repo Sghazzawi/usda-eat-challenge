@@ -1,15 +1,9 @@
 <template>
+<require from="../components/income-questions"></require>
 	<div class="flex-col centered-column">
 		<div class="question-panel">
 		</div>
-		<div class="flex-col">
-		    <div class="flex">
-		      <span>Does ${currentQuestion.resident.firstName} ${currentQuestion.resident.lastName}
-		      recieve any income from ${currentQuestion.question.title}</span>
-		    </div>
-		    <div class="flex">
-			  <button>Yes</button><button click.delegate="incrementQuestion()">No</button>
-			</div>
-		</div>
+		<income-questions residents.bind="eatApplication.children" incometypes.bind="incomeTypes"  done.trigger="continue()">
+		</income-questions>
 	</div>
 </template>
