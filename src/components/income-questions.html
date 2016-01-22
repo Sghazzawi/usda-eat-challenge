@@ -1,18 +1,25 @@
 <template>
 	<div class="flex-col">
-		<div class="flex">
-		  	<span>Does ${currentQuestion.resident.firstName} ${currentQuestion.resident.lastName}
-				recieve any income from ${currentQuestion.question.title}</span>
+		<div class="question-panel" if.bind="!answeredYes">
+		  	<p class="main">Does ${currentQuestion.resident.firstName} ${currentQuestion.resident.lastName}
+				recieve any income from ${currentQuestion.question.title}</p>
+		</div>
+		<div class="question-panel" if.bind="answeredYes">
+		  	<p class="main">How much income does ${currentQuestion.resident.firstName} ${currentQuestion.resident.lastName} recieve from ${currentQuestion.question.title}</p>
+		</div>
+		<div class="flex" if.bind="!answeredYes">
+				<button class="btn btn-default" click.delegate = "answerYes()">Yes</button><button class="btn btn-default" click.delegate="incrementQuestion()">No</button>
+		</div>
+		<div class="flex-col" if.bind="answeredYes">
+		    <div class="flex">
+			    <input type="text" value.bind="incomeAmount">
+			    <select value.bind="selectedFrequency">
+				    <option repeat.for="frequency of frequencies">${frequency}</option>
+			    </select>
 			</div>
-			<div class="flex" if.bind="!answeredYes">
-				<button click.delegate = "answerYes()">Yes</button><button click.delegate="incrementQuestion()">No</button>
-			</div>
-			<div class="flex" if.bind="answeredYes">
-			<input type="text" value.bind="incomeAmount">
-				<select value.bind="selectedFrequency">
-					<option repeat.for="frequency of frequencies">${frequency}</option>
-				</select>
-				<button click.delegate = "cancel()">Cancel</button><button click.delegate="submit()">Submit</button>
+			<div class="flex">
+			    <button class="btn btn-default" click.delegate = "cancel()">Cancel</button>
+			    <button class="btn btn-default"click.delegate="submit()">Submit</button>
 			</div>
 		</div>
 	</div>

@@ -1,16 +1,18 @@
 <template>
- <div class="flex-col centered-column">
-     <div class="question-panel">
-     </div>
-	 <div class="flex" repeat.for="savedChild of eatApplication.children">
-	    <div>${savedChild.firstName}</div>
-	    <div>${savedChild.lastName}</div>
+    <require from="../components/resident-checklist.html"></require>
+	<div class="flex-col centered-column">
+		<div class="question-panel">
+			<p class="main">
+				Please indicate the children in your household who are homeless.
+			</p>
+			<p class="byline">
+				Check the box next to each childs name who is homeless.
+			</p>
+		</div>
+		<resident-checklist residents.bind="eatApplication.children" checkedprop.bind="'isHomeless'">
+	    </resident-checklist>
 	    <div class="flex">
-	      <input type="checkbox" checked.bind="savedChild.isHomeless" />
+		    <button type="submit" class="btn btn-default continue" click.delegate="continue()" >Done <i class="fa fa-arrow-right"></i></button>
 	    </div>
-	 </div>
-	  <div class="flex">
-	   <button type="submit" class="btn btn-default" click.delegate="continue()" >Done <i class="fa fa-arrow-right"></i></button>
-	 </div>
- </div>
+    </div>
 </template>

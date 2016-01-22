@@ -8,6 +8,20 @@ body {
   box-sizing: border-box;
 }
 
+.question-panel .main {
+  font-family: "Montserrat";
+  font-size: 28px;
+  line-height: 43px;
+}
+
+.question-panel .byline {
+   font-family: "Montserrat";
+   font-style: normal;
+   font-weight: 400;
+   font-size: 13px;
+   line-height: 1.4;
+}
+
 .splash .message {
   font-size: 72px;
   line-height: 72px;
@@ -15,6 +29,43 @@ body {
   text-transform: uppercase;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+resident-list .new input{
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  margin-bottom: 10px;
+  box-shadow: none;
+}
+
+resident-list .new button{
+  margin-bottom: 10px;
+}
+
+income-questions select {
+  border-style: none;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.resident-checklist.item {
+  flex: 1 ;
+}
+
+.resident-checklist.row {
+  line-height: 34px ;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.resident-checklist.item input{
+  transform: scale(1.7);
+}
+
+button.continue {
+  margin-top: 10px;
+}
+
 
 .splash .fa-spinner {
   text-align: center;
@@ -35,6 +86,11 @@ body {
 .flex {
   display: flex;
 }
+
+.centered {
+  justify-content: centered;
+}
+
 .flex>div {
   flex: 1;
 }
@@ -44,7 +100,8 @@ body {
 }
 
 .question-panel {
-  height: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
 .x1 {

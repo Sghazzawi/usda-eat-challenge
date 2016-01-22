@@ -13,4 +13,11 @@ export class Homeless extends StepMixin(Route) {
   		child.isHomeless = !!child.isHomeless;
   	});
   }
+
+  continue() {
+		if (this.eatApplication.children.every(child => child.isFoster || child.isHomeless)) {
+			this.next="verify";
+		}
+		super.continue();
+	}
 }

@@ -2,11 +2,17 @@
 	<require from="./components/resident-list.js"></require>
 	<div class="flex-col centered-column">
 		<div class="question-panel">
+		  <p class="main">
+		  Please list all household members who are infants, children and students up to and including grade 12.
+		  </p>
+		  <p class="byline">
+		  A household member is anyone who is living with you and shares income and expenses, even if they are not related to you
+		  </p>
 		</div>
 		<resident-list displaylist.bind="eatApplication.children" addfunction.bind="eatApplication.addChild" removefunction.bind="eatApplication.removeChild">
 		</resident-list>
 		<div class="flex">
-			<button type="submit" class="btn btn-default" click.delegate="continue()" >Done <i class="fa fa-arrow-right"></i></button>
+			<button type="submit" class="btn btn-default continue" click.delegate="continue()" >Done <i class="fa fa-arrow-right"></i></button>
 		</div>
 	</div>
 </template>

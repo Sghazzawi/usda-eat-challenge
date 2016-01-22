@@ -1,0 +1,11 @@
+<template bindable="residents, checkedprop">
+  	 <div class="flex resident-checklist row" repeat.for="resident of residents">
+	    <div class="resident-checklist item">
+	      <span>${resident.firstName + " "}</span>
+	      <span>${resident.lastName}</span>
+	    </div>
+	    <div class="resident-checklist item">
+	      <input type="checkbox" checked.bind="resident[checkedprop]" />
+	    </div>
+	 </div>
+</template>
