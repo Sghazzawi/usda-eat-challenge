@@ -1,0 +1,59 @@
+@import "question-panel"
+@import "resident-list"
+@import "resident-checklist"
+@import "income-questions"
+@import "button"
+@import "nib"
+
+html
+  height 100%
+body
+  margin 0
+  background radial-gradient(circle 700px, #f1f1f1  10%, #aeb0b5 60%)
+  background-repeat no-repeat
+  height 100%
+  min-height 100%
+  display flex
+  flex-direction column
+  .page-host
+  	display flex
+  	flex-direction column
+  	flex 1
+  	router-view
+  	  display flex
+  	  flex-direction column
+  	  flex 1
+  	  justify-content center
+  	  align-items center
+
+button.continue
+  margin-top 10px
+
+.x1
+  flex 1
+  
+.centered-column
+  min-width 720px
+  max-width 720px
+  margin-left auto
+  margin-right auto
+  background-color #fff
+  padding 10px
+  border-radius 5px
+  
+  
+.flex
+  display flex
+
+.flex-col
+  display flex
+  flex-direction column
+.two-wide
+  min-width 60px
+  margin-left 10px
+.five-wide
+  min-width 85px
+  margin-left 10px
+.address-row
+  margin-top 10px
+  

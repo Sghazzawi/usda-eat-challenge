@@ -13,19 +13,14 @@ export class Income extends StepMixin(Route) {
   	this.next = 'adults';
     var self = this;
     this.validation = validation;
+    this.childrenWithIncome = eatApplication.children.filter(child => child.hasIncome);
     this.eatApplication.children.forEach(function(child){
       child.income = child.income || [];
     });
-    this.incomeTypes = [{title: 'work',
-    shouldDisplay: false,
-    quesion: "work"},
-    {title: 'Social Security - Disability Benefits',
-    shouldDisplay: false},
-    {title: 'Social Security - Survivor Benefits',
-    shouldDisplay: false},
-    {title: 'Persons Outside the Household',
-    shouldDisplay: false},
-    {title: 'Other',
-    shouldDisplay: false}];
+    this.incomeTypes = ['work',
+                        'Social Security - Disability Benefits',
+                        'Social Security - Survivor Benefits',
+                        'Persons Outside the Household',
+                        'Other'];
   }
 }

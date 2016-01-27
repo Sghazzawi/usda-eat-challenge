@@ -10,7 +10,7 @@ import {Validation} from 'aurelia-validation';
 export class Assitance extends StepMixin(Route){
 	constructor(eatApplication, validation, router) {
 		super(eatApplication,router);
-		this.next="children/income";
+		this.next="children/income-one";
 	}
 
 	continue() {

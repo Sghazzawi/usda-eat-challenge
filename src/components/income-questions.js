@@ -16,6 +16,7 @@ export class incomeQuestions {
 	continue;
 
 	frequencies = ["every week","every other week","twice a month","every month"];
+	completedResidents = [];
 
 	constructor(validation, element){
 		this.validation = validation;
@@ -31,12 +32,10 @@ export class incomeQuestions {
 	        });
 	    this.questions = (function *(residents, questions) {
 			for (let i=0; i < residents.length; i++) {
-				for (let j=0; j < questions.length; j++) {
-					yield {
-						resident: residents[i],
-						question: questions[j]
-					};
-				}
+				yield {
+					resident: residents[i],
+					questions: questions
+				};
 			};
 		})(this.residents, this.incometypes);
 		this.incrementQuestion();
@@ -57,10 +56,16 @@ export class incomeQuestions {
 
 		newIncome.validation.validate().then(() => {
 			this.currentQuestion.resident.income.push(newIncome);
+			this.incomeAmount = 0;
+			this.selectedFrequency = "every week";
 			this.answeredYes = false;
-			this.incrementQuestion();
 
 		}, (error, x) => { debugger; console.log('validation failed')});
+	}
+
+	removeIncome(income) {
+		let incomeArray = this.currentQuestion.resident.income;
+		incomeArray.splice(incomeArray.indexOf(income),1);
 	}
 
 	incrementQuestion(){
@@ -69,6 +74,7 @@ export class incomeQuestions {
 			this.element.dispatchEvent(this.doneEvent);
 		} else {
 			this.answeredYes = false;
+			this.completedResidents.push(this.currentQuestion);
 			this.currentQuestion = next.value;
 		}
 	}

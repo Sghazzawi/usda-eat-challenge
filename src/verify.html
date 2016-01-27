@@ -1,14 +1,13 @@
 <template>
 	<h2>Children</h2>
 	  <div repeat.for="child of application.children">
-	    <span>${child.firstName}</span>
-	    <span>${child.lastName}</span>
-	    <span>${child.isEnrolled}</span>
-	    <span>${child.isFoster}</span>
-	    <span>${child.isHomeless}</span>
+	    <h3>${child.firstName} ${child.lastName}</h3>
+	    <div if.bind="child.isEnrolled">${child.firstName} is enrolled in school</div>
+	    <div if.bind="child.isFoster">${child.firstName} is a foster child</div>
+	    <div if.bind="child.isHomeless">${child.firstName} is homeless</div>
 	    <div repeat.for="income of child.income">
-	      <span>${income.amount}</span>
-	      <span>${income.frequency}</span>
+	      <div>${income.amount} ${income.frequency}</div>
+	      <div>${income.yearlyAmount} annually</div>
 	    </div>
 	  </div>
 	<h2>Adults</h2>
@@ -16,8 +15,8 @@
 	    <span>${adult.firstName}</span>
 	    <span>${adult.lastName}</span>
 	    <div repeat.for="income of adult.income">
-	      <span>${income.amount}</span>
-	      <span>${income.frequency}</span>
+	      <div>${income.amount} ${income.frequency}</div>
+	      <div>${income.yearlyAmount} annually</div>
 	    </div>
 	  </div>
 	<h2>Address</h2>

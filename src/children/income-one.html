@@ -1,0 +1,34 @@
+<template>
+    <require from="../components/resident-checklist.html"></require>
+	<div class="flex-col centered-column">
+		<div class="question-panel">
+			<p class="main">
+				Please indicate which children in your household receive income.
+			</p>
+			<p class="byline">
+				Sometimes children in the household earn income, examples of child income are:
+				<ul> 
+				  <li>Work</li>
+				  <li>Social Security benefits</li>
+				    <ul>
+				     <li>for the child’s disability</li>
+                     <li>because a parent is disabled, retired, or deceased)</li>
+                    </ul>
+                  <li>Pension income</li> 
+                  <li>Trust income</li>
+                  <li>Annuity income</li> 
+                  <li>Regular income from a relative or friend from outside the household</li>
+                    <ul>
+                      <li>including spending money</li>
+                    </ul>
+                  <li>Any other source</li>
+                </ul>
+			</p>
+		</div>
+		<resident-checklist residents.bind="eatApplication.children" checkedprop.bind="'hasIncome'">
+	    </resident-checklist>
+	    <div class="flex">
+		    <button type="submit" class="btn btn-primary continue" click.delegate="continue()" >Done <i class="fa fa-arrow-right"></i></button>
+	    </div>
+    </div>
+</template>

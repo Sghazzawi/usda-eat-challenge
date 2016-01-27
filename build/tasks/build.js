@@ -9,7 +9,8 @@ var compilerOptions = require('../babel-options');
 var assign = Object.assign || require('object.assign');
 var notify = require("gulp-notify");
 var browserSync = require('browser-sync');
-
+var nib = require('nib');
+var stylus = require('gulp-stylus');
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
 // by errors from other gulp plugins
@@ -32,9 +33,20 @@ gulp.task('build-html', function() {
 });
 
 // copies changed css files to the output directory
-gulp.task('build-css', function() {
-  return gulp.src(paths.css)
-    .pipe(changed(paths.output, {extension: '.css'}))
+// gulp.task('build-css', function() {
+//   return gulp.src(paths.css)
+//     .pipe(changed(paths.output, {extension: '.css'}))
+//     .pipe(gulp.dest(paths.output))
+//     .pipe(browserSync.stream());
+// });
+
+gulp.task('build-css', function () {
+    return gulp.src(paths.stylus)
+       .pipe(changed(paths.output, {extension: '.css'}))
+       .pipe(stylus({
+           compress: true,
+           use:nib()
+    }))
     .pipe(gulp.dest(paths.output))
     .pipe(browserSync.stream());
 });

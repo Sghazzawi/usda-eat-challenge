@@ -1,26 +1,48 @@
 <template>
+    <require from="../utils/currency-format">
+    </require>
 	<div class="flex-col">
 		<div class="question-panel" if.bind="!answeredYes">
-		  	<p class="main">Does ${currentQuestion.resident.firstName} ${currentQuestion.resident.lastName}
-				recieve any income from ${currentQuestion.question.title}</p>
-		</div>
-		<div class="question-panel" if.bind="answeredYes">
-		  	<p class="main">How much income does ${currentQuestion.resident.firstName} ${currentQuestion.resident.lastName} recieve from ${currentQuestion.question.title}</p>
-		</div>
-		<div class="flex" if.bind="!answeredYes">
-				<button class="btn btn-default" click.delegate = "answerYes()">Yes</button><button class="btn btn-default" click.delegate="incrementQuestion()">No</button>
-		</div>
-		<div class="flex-col" if.bind="answeredYes">
-		    <div class="flex">
-			    <input type="text" value.bind="incomeAmount">
-			    <select value.bind="selectedFrequency">
+		    <div repeat.for="question of completedResidents">
+		       Foo
+			    <p class="byline" repeat.for="income of question.resident.income">
+			      Bar
+		  	        <input type="text" class="income-amount" value.bind="income.amount | currencyFormat">
+		  	        <select value.bind="income.frequency">
+					    <option repeat.for="frequency of frequencies">${frequency}</option>
+				    </select> from
+				    <select >
+					    <option repeat.for="question of currentQuestion.questions">${question}</option>
+			        </select>
+			         <button type="submit" class="btn btn-primary-alt" click.delegate="removeIncome(income)"><i class="fa fa-minus"></i></button>
+		  	    </p>
+		    </div>
+		    <p class="main">
+		      Please list all income for ${currentQuestion.resident.firstName} ${currentQuestion.resident.lastName}
+		    </p>
+	    	<p class="byline" repeat.for="income of currentQuestion.resident.income">
+	  	        <input type="text" class="income-amount" value.bind="income.amount | currencyFormat">
+	  	        <select value.bind="income.frequency">
 				    <option repeat.for="frequency of frequencies">${frequency}</option>
+			    </select> from
+			    <select >
+				    <option repeat.for="question of currentQuestion.questions">${question}</option>
+		        </select>
+		         <button type="submit" class="btn btn-primary-alt" click.delegate="removeIncome(income)"><i class="fa fa-minus"></i></button>
+	  	    </p>
+		  	<p class="byline"> 
+				<input type="text" class="income-amount" value.bind="incomeAmount | currencyFormat"> 
+				<select value.bind="selectedFrequency">
+				    <option repeat.for="frequency of frequencies">${frequency}</option>
+			    </select> from
+			    <select >
+				    <option repeat.for="question of currentQuestion.questions">${question}</option>
 			    </select>
-			</div>
-			<div class="flex">
-			    <button class="btn btn-default" click.delegate = "cancel()">Cancel</button>
-			    <button class="btn btn-default"click.delegate="submit()">Submit</button>
-			</div>
+			    <button type="submit" class="btn btn-primary-alt" click.delegate="submit()"><i class="fa fa-plus"></i></button>
+			</p>
+		</div>
+		<div class="yes-no" if.bind="!answeredYes">
+				<button class="btn btn-primary" click.delegate = "incrementQuestion()">Done</button>
 		</div>
 	</div>
 </template>

@@ -5,12 +5,12 @@ import {Router} from 'aurelia-router';
 import StepMixin from '../mixins/step-mixin';
 
 @inject(eatApplication, Router)
-export class Enrollment extends StepMixin(Route) {
+export class Foster extends StepMixin(Route) {
   constructor(eatApplication, router) {
   	super(eatApplication, router);
-  	this.next = 'children/headstart';
+  	this.next = 'children/income';
   	this.eatApplication.children.forEach(function(child){
-  		child.isEnrolled = !!child.isEnrolled;
+  		child.hasIncome = !!child.hasIncome;
   	});
   }
 }
